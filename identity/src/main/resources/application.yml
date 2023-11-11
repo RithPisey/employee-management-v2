@@ -1,8 +1,8 @@
 spring:
   config:
-    import: optional:file:../../../../env.properties
+    import: optional:file:./env.properties
   datasource:
-    url: ${EUREKA_DEFAULT_ZONE}
+    url: ${IDENTITY_DB_URL}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   application:
