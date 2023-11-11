@@ -1,0 +1,18 @@
+spring:
+  config:
+    import: optional:file:../../../../env.properties
+  datasource:
+    url: ${EUREKA_DEFAULT_ZONE}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  application:
+    name: ${IDENTITY_SERVICE_NAME}
+
+server:
+  port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE}
+
