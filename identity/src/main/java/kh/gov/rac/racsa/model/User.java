@@ -21,6 +21,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    private Role role;
     @Column(name = "role_id")
     private Integer roleId;
 
