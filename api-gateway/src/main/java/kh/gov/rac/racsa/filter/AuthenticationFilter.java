@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
+
 public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
 
@@ -29,20 +31,22 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                             "missing authorization header");
                 }
 
-                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-                if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                    authHeader = authHeader.substring(7);
+                String token = Objects.requireNonNull(exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION)).get(0);
+                if (token != null && token.startsWith("Bearer ")) {
+                    token = token.substring(7);
                 }
                 try {
                     // REST call to AUTH service
-                    // template.getForObject("http://IDENTITY-SERVICE//validate?token" + authHeader,
+                    // template.getForObject("http://IDENTITY-SERVICE//validate?token" + token,
                     // String.class);
-                    jwtUtil.validateToken(authHeader);
+                    jwtUtil.validateToken(token);
 
                 } catch (Exception e) {
                     System.out.println("invalid access...!");
                     throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "un authorized access to application");
                 }
+            }else{
+
             }
             return chain.filter(exchange);
         });
