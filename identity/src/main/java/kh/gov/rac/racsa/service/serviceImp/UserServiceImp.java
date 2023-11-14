@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImp implements UserService {
     private final JwtService jwtService = new JwtService();
     @Override
-    public String generateToken(String email, Integer roleId) {
+    public String generateToken(String email, Long roleId) {
 
         return jwtService.generateToken(email,roleId);
     }

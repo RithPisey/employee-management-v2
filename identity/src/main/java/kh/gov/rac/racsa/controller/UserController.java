@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/identity")
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
@@ -43,12 +43,12 @@ public class UserController {
                     .authenticate(
                             new AuthenticationToken(
                                     authRequest.getEmail(),
-                                    authRequest.getPassword(),user.get().getRoleId().toString())
+                                    authRequest.getPassword(),user.get().getRole().getId().toString())
                     );
             if (authenticate.isAuthenticated()) {
-                tokenData.put("token", userService.generateToken(authRequest.getEmail(),user.get().getRoleId()));
+                tokenData.put("token", userService.generateToken(authRequest.getEmail(),user.get().getRole().getId()));
                 tokenData.put("email", user.get().getEmail());
-                tokenData.put("role", user.get().getRoleId());
+                tokenData.put("role", user.get().getRole().getRoleName());
                 return ResponseMessage.responseObject("Token is valid", false, true, tokenData);
             } else {
                 throw new RuntimeException("invalid access");

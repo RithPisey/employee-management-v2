@@ -21,13 +21,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @ManyToOne
+    @JoinColumn(name = "role_id")
     private Role role;
-    @Column(name = "role_id")
-    private Integer roleId;
 
-    @Column(name = "org_id")
-    private Integer orgId;
+    @OneToOne
+    @JoinColumn(name = "org_id")
+    private Organization organization;
 
     @Column(name = "branch_id")
     private String branchId;
@@ -54,8 +54,5 @@ public class User {
 
     @Column(name = "created_by")
     private LocalDateTime createdBy;
-
-
-
 
 }

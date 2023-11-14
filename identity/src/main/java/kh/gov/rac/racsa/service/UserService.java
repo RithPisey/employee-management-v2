@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 public interface UserService  {
 
-    String generateToken(String email,Integer roleId);
+    String generateToken(String email,Long roleId);
 }

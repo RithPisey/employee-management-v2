@@ -1,7 +1,4 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+
 spring:
   config:
     import: optional:file:./env.properties
@@ -9,12 +6,17 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      route:
-        id: ${IDENTITY_SERVICE_NAME}
-        uri: lb://${IDENTITY_SERVICE_NAME}
-        predicates: Path=/api/user/**
-        filters: AuthenticationFilters
+      routes:
+        - id: ${IDENTITY_SERVICE_NAME}
+          uri: lb://${IDENTITY_SERVICE_NAME}
+          predicates:
+            - Path=/api/identity/**
+          filters: AuthenticationFilter
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE}
 
 logging:
   level:

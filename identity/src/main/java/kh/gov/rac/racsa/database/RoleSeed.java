@@ -2,6 +2,7 @@ package kh.gov.rac.racsa.database;
 
 import kh.gov.rac.racsa.model.Role;
 import kh.gov.rac.racsa.model.User;
+import kh.gov.rac.racsa.model.UserType;
 import kh.gov.rac.racsa.repository.RoleRepository;
 import kh.gov.rac.racsa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,11 @@ public class RoleSeed implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Role role = new Role();
+        UserType userType = new UserType();
+        userType.setId(1L);
         role.setId(1L);
         role.setRoleName("developer");
-        role.setUserTypeId(1);
+        role.setUserType(userType);
 
         roleRepository.save(role);
 

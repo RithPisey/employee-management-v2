@@ -51,4 +51,6 @@ public class Branch {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    private LocalDateTime deletedAt;
+
 }

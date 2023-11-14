@@ -23,7 +23,7 @@ public class JwtService {
     }
 
 
-    public String generateToken(String email,Integer roleId) {
+    public String generateToken(String email,Long roleId) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", email);
         claims.put("role_id", roleId);

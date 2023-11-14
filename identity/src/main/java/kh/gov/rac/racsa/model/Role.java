@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -22,8 +23,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_type_id")
-    private Integer userTypeId;
+    @ManyToOne
+    @JoinColumn(name = "user_type_id")
+    private UserType userType;
 
     @Column(name = "role_name", length = 150)
     private String roleName;
@@ -38,5 +40,9 @@ public class Role {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "role")
+    @JsonIgnore
+    Set<User> user;
 
 }

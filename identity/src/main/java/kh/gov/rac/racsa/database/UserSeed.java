@@ -1,5 +1,6 @@
 package kh.gov.rac.racsa.database;
 
+import kh.gov.rac.racsa.model.Role;
 import kh.gov.rac.racsa.model.User;
 import kh.gov.rac.racsa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,13 @@ public class UserSeed implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user = new User();
+        Role role = new Role();
+        role.setId(1L);
         user.setId(1L);
         user.setEmail("developer@rac.com.kh");
         user.setPassword(passwordEncoder.encode("$rac@123$"));
         user.setStatus(1);
-        user.setRoleId(1);
+        user.setRole(role);
 
         userRepository.save(user);
 
