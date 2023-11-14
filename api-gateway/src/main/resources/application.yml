@@ -7,8 +7,13 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: ${CONFIG_SERVICE_NAME}
+          uri: ${CONFIG_SERVICE_URI}
+          predicates:
+            - Path=/api/config/**
+          filters: AuthenticationFilter
         - id: ${IDENTITY_SERVICE_NAME}
-          uri: lb://${IDENTITY_SERVICE_NAME}
+          uri: ${IDENTITY_SERVICE_URI}
           predicates:
             - Path=/api/identity/**
           filters: AuthenticationFilter

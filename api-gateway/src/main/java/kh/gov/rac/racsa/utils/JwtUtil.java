@@ -27,7 +27,12 @@ public class JwtUtil {
 
 
     private TokenPayload getPayload(String token){
-         return (TokenPayload) Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
+         return (TokenPayload) Jwts
+                 .parserBuilder()
+                 .setSigningKey(getSignKey())
+                 .build()
+                 .parseClaimsJws(token)
+                 .getBody();
     }
 
 }
