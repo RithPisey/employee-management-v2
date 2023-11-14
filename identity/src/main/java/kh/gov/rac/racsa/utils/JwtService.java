@@ -6,8 +6,9 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.security.Key;
 import java.util.Date;
@@ -21,8 +22,10 @@ public class JwtService {
 
     public static final Long expire = 1000L * 60 * 60 * 24;
 
+    @Autowired
+    private WebClient.Builder webClientBuilder;
 
-    public static String SECRET = "abc";
+//    public static String SECRET = "abc";
 
     public void validateToken(final String token) {
         Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
@@ -46,6 +49,8 @@ public class JwtService {
     }
 
     private Key getSignKey() {
+
+        String SECRET = webClientBuilder.build().get().uri("http://config-service/api/config/secret-token").retrieve().bodyToMono(String.class).block();
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }

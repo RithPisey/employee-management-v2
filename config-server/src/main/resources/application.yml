@@ -9,6 +9,6 @@ spring:
     name: ${CONFIG_SERVICE_NAME}
 
 server:
-  port: 8888
+  port: 0
 
 JWT_SECRET: D6pHbCIpA3dZvajlllOEwM91yXzBboYl6FXUJRGOaISjN7ZWyUiz7S1ofd7eHZXS

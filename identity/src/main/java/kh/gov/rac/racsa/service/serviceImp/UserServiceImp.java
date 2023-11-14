@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImp implements UserService {
-    private final JwtService jwtService = new JwtService();
+    private final JwtService jwtService;
     @Override
     public String generateToken(String email, Long roleId) {
 
