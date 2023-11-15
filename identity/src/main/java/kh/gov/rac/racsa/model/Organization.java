@@ -1,5 +1,6 @@
 package kh.gov.rac.racsa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -53,6 +54,10 @@ public class Organization {
     private LocalDateTime updatedAt;
 
     private LocalDateTime deletedAt;
+
+    @OneToMany(mappedBy = "organization")
+    @JsonIgnore
+    Set<Role> role;
 
 
 }

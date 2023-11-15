@@ -27,6 +27,10 @@ public class Role {
     @JoinColumn(name = "user_type_id")
     private UserType userType;
 
+    @ManyToOne
+    @JoinColumn(name = "org_id")
+    private Organization organization;
+
     @Column(name = "role_name", length = 150)
     private String roleName;
 
