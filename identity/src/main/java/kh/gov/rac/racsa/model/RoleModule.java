@@ -19,7 +19,7 @@ import java.util.Date;
 public class RoleModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_module_id")
+    @Column(name = "id")
     private Long roleModuleId;
 
     @Column(name = "role_id")
