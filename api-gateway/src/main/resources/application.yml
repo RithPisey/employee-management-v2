@@ -1,5 +1,7 @@
 
 spring:
+  main:
+    web-application-type: reactive
   config:
     import: optional:file:./env.properties
   application:

@@ -26,14 +26,11 @@ public class JwtUtil {
         Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
     }
 
-
-
     private Key getSignKey() {
         String SECRET = Variable.SECRET_JWT_TOKEN;
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
 
     private TokenPayload getPayload(String token){
          return (TokenPayload) Jwts
@@ -43,5 +40,4 @@ public class JwtUtil {
                  .parseClaimsJws(token)
                  .getBody();
     }
-
 }
