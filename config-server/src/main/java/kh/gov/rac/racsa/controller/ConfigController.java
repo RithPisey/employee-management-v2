@@ -13,11 +13,5 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ConfigController {
 
-    @Value("${JWT_SECRET}")
-    String SecretToken;
 
-    @GetMapping("/secret-token")
-    public String getSecretToken(){
-        return SecretToken;
-    }
 }

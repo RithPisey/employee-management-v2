@@ -4,6 +4,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import kh.gov.rac.racsa.controller.config.Variable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class JwtService {
 
     private Key getSignKey() {
 
-        String SECRET = webClientBuilder.build().get().uri("http://config-service/api/config/secret-token").retrieve().bodyToMono(String.class).block();
+        String SECRET = Variable.SECRET_JWT_TOKEN;
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }
