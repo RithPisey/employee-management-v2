@@ -1,6 +1,5 @@
 package kh.gov.rac.racsa.dto.Module;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import kh.gov.rac.racsa.enums.StatusEnum;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ModuleRequest {
+public class ModuleRequestDTO {
     @Max(100)
     private String name;
     @Max(100)

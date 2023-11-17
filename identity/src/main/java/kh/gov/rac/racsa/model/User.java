@@ -1,6 +1,7 @@
 package kh.gov.rac.racsa.model;
 
 import jakarta.persistence.*;
+import kh.gov.rac.racsa.enums.StatusEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -30,7 +31,7 @@ public class User {
     private Organization organization;
 
     @Column(name = "branch_id")
-    private String branchId;
+    private String branch_id;
 
     @Column(name = "email")
     private String email;
@@ -38,21 +39,22 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "status",length = 1)
-    private Integer status;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private Date createdAt;
+    private Date created_at;
 
     @Column(name = "deleted_at")
-    private Date deletedAt;
+    private Date deleted_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
     @Column(name = "created_by")
-    private LocalDateTime createdBy;
+    private LocalDateTime created_by;
 
 }

@@ -25,25 +25,25 @@ public class Role {
 
     @ManyToOne
     @JoinColumn(name = "user_type_id")
-    private UserType userType;
+    private UserType user_type;
 
     @ManyToOne
     @JoinColumn(name = "org_id")
     private Organization organization;
 
     @Column(name = "role_name", length = 150)
-    private String roleName;
+    private String role_name;
 
     @Column(name = "role_desc", columnDefinition = "text")
-    private String roleDesc;
+    private String role_desc;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
     @OneToMany(mappedBy = "role")
     @JsonIgnore

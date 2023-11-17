@@ -20,24 +20,24 @@ public class RoleModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long roleModuleId;
+    private Long role_module_id;
 
     @Column(name = "role_id")
-    private Integer roleId;
+    private Integer role_id;
 
     @Column(name = "module_key", length = 100)
-    private String moduleKey;
+    private String module_key;
 
     @Column(name = "permission_id")
-    private Integer permissionId;
+    private Integer permission_id;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
 
 }

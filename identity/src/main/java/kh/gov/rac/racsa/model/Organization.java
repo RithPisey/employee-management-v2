@@ -2,6 +2,7 @@ package kh.gov.rac.racsa.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import kh.gov.rac.racsa.enums.StatusEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -25,7 +26,7 @@ public class Organization {
     private String name;
 
     @Column(name = "latin_name", length = 150)
-    private String latinName;
+    private String latin_name;
 
     @Column(name = "code", length = 100)
     private String code;
@@ -34,7 +35,7 @@ public class Organization {
     private String phone;
 
     @Column(name = "alt_phone", length = 100)
-    private String altPhone;
+    private String alt_phone;
 
     @Column(name = "email", length = 100)
     private String email;
@@ -42,18 +43,19 @@ public class Organization {
     @Column(name = "address", length = 100)
     private String address;
 
-    @Column(name = "status", columnDefinition = "bit(1) default 1")
-    private boolean status;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
-    private LocalDateTime deletedAt;
+    private LocalDateTime deleted_at;
 
     @OneToMany(mappedBy = "organization")
     @JsonIgnore

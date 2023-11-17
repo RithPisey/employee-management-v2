@@ -28,10 +28,10 @@ public class Permission {
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
 }

@@ -1,6 +1,7 @@
 package kh.gov.rac.racsa.model;
 
 import jakarta.persistence.*;
+import kh.gov.rac.racsa.enums.StatusEnum;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -25,18 +26,19 @@ public class Module {
     private String name;
 
     @Column(name = "module_key", length = 150, unique = true)
-    private String moduleKey;
+    private String module_key;
 
     @Column(name = "status")
-    private Boolean status;
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
 
 }

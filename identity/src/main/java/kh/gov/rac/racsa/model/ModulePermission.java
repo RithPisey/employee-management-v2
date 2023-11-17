@@ -16,8 +16,8 @@ public class ModulePermission {
     private Long id;
 
     @Column(name = "module_id")
-    private Integer moduleId;
+    private Integer module_id;
 
     @Column(name = "permission_id")
-    private Integer permissionId;
+    private Integer permission_id;
 }
