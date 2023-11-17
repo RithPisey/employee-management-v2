@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,19 +22,20 @@ import java.util.stream.Collectors;
 public class ModuleServiceImp implements ModuleService {
 
     private final ModuleRepository moduleRepository;
-    private final Module module;
+
     @Override
     public Boolean createModule(ModuleRequestDTO moduleRequestDTO) {
         return null;
     }
     @Override
-    public Set<Module> getModule(int page, int size, String orderBy, String orderType, ModuleFilterInputDTO filter) {
+    public List<Module> getModule(int page, int size, String orderBy, String orderType, ModuleFilterInputDTO filter) {
+//
         Pageable pageable = PageRequest.of(page, size);
         Page<Module> modules = moduleRepository
                 .findAll(ModuleDao.moduleSpecification(page,size,orderBy,orderType,filter),pageable);
         return modules
                 .stream()
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
 }

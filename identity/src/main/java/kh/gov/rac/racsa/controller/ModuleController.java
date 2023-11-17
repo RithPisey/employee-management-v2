@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -22,13 +23,13 @@ public class ModuleController {
 
 
     @GetMapping
-    public HashMap<String, Object> moduleData(@RequestParam(defaultValue = "0") int page,
-                           @RequestParam(defaultValue= "1000") int size,
+    public HashMap<String, Object> moduleData(@RequestParam(defaultValue = "1") int page,
+                           @RequestParam(defaultValue= "10") int size,
                            @RequestParam(defaultValue = "created_at") String orderBy,
                            @RequestParam(defaultValue = "desc") String orderType,
                            @RequestBody ModuleFilterInputDTO filter
                            ){
-        Set<Module> modules = moduleService.getModule(page, size, orderBy, orderType, filter);
+        List<Module> modules = moduleService.getModule(page, size, orderBy, orderType, filter);
         return ResponseMessage.responseObject(
                 "module list",
                 false,

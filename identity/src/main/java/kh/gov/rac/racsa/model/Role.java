@@ -37,7 +37,7 @@ public class Role {
     @Column(name = "role_desc", columnDefinition = "text")
     private String role_desc;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at" ,updatable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
 

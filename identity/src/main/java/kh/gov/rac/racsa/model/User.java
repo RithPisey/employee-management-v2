@@ -43,7 +43,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at" ,updatable = false)
     @CreationTimestamp
     private Date created_at;
 

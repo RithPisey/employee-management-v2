@@ -18,7 +18,7 @@ public class IUserDetailsService implements UserDetailsService {
     public IUserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> credential = userRepository.findByEmail(email);
         if(credential.isPresent()){
-            if(credential.get().getDeletedAt() !=null) throw new UsernameNotFoundException("user is not active :" + email);
+            if(credential.get().getDeleted_at() !=null) throw new UsernameNotFoundException("user is not active :" + email);
         }
         return credential.map(IUserDetails::new).orElseThrow(()
                 -> new UsernameNotFoundException("user not found with email :" + email));

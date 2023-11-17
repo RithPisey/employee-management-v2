@@ -31,7 +31,7 @@ public class RoleModule {
     @Column(name = "permission_id")
     private Integer permission_id;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at" ,updatable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
 

@@ -24,8 +24,8 @@ public class RoleSeed implements CommandLineRunner {
         UserType userType = new UserType();
         userType.setId(1L);
         role.setId(1L);
-        role.setRoleName("developer");
-        role.setUserType(userType);
+        role.setRole_name("developer");
+        role.setUser_type(userType);
 
         roleRepository.save(role);
 

@@ -7,6 +7,11 @@ spring:
     password: ${DB_PASSWORD}
   application:
     name: ${IDENTITY_SERVICE_NAME}
+  jpa:
+    show-sql: ${SHOW_SQL}
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 server:
   port: 0
@@ -15,4 +20,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_DEFAULT_ZONE}
+
 

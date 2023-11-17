@@ -16,7 +16,7 @@ public class ModuleSeed implements CommandLineRunner {
         Module moduleDashboard = new Module();
         moduleDashboard.setId(1L);
         moduleDashboard.setName("dashboard");
-        moduleDashboard.setModuleKey("dashboard");
+        moduleDashboard.setModule_key("dashboard");
         moduleDashboard.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleDashboard);
 
@@ -24,35 +24,35 @@ public class ModuleSeed implements CommandLineRunner {
         Module moduleOrganization = new Module();
         moduleOrganization.setId(2L);
         moduleOrganization.setName("organization");
-        moduleOrganization.setModuleKey("organization");
+        moduleOrganization.setModule_key("organization");
         moduleOrganization.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleOrganization);
 
         Module moduleBranch = new Module();
-        moduleBranch.setId(2L);
+        moduleBranch.setId(3L);
         moduleBranch.setName("branch");
-        moduleBranch.setModuleKey("branch");
+        moduleBranch.setModule_key("branch");
         moduleBranch.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleBranch);
 
         Module moduleUserList = new Module();
-        moduleUserList.setId(3L);
+        moduleUserList.setId(4L);
         moduleUserList.setName("user_list");
-        moduleUserList.setModuleKey("user_list");
+        moduleUserList.setModule_key("user_list");
         moduleUserList.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleUserList);
 
         Module moduleRole = new Module();
-        moduleRole.setId(4L);
+        moduleRole.setId(5L);
         moduleRole.setName("role");
-        moduleRole.setModuleKey("role");
+        moduleRole.setModule_key("role");
         moduleRole.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleRole);
 
         Module moduleUserLog = new Module();
-        moduleUserLog.setId(4L);
+        moduleUserLog.setId(6L);
         moduleUserLog.setName("user_log");
-        moduleUserLog.setModuleKey("user_log");
+        moduleUserLog.setModule_key("user_log");
         moduleUserLog.setStatus(StatusEnum.ACTIVE);
         moduleRepository.save(moduleUserLog);
 

@@ -26,7 +26,7 @@ public class Permission {
     private String action;
 
 
-    @Column(name = "created_at")
+    @Column(name = "created_at" ,updatable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
 

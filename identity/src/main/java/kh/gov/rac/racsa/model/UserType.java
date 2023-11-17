@@ -30,7 +30,7 @@ public class UserType {
     @Column(name = "level", length = 100)
     private Integer level;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at" ,updatable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
 

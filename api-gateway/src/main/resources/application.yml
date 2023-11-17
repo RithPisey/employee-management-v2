@@ -17,8 +17,8 @@ spring:
         - id: ${IDENTITY_SERVICE_NAME}
           uri: ${IDENTITY_SERVICE_URI}
           predicates:
-            - Path=/api/identity/**
-            - Path= /api/module/**
+            - Path=/api/identity/**,
+              /api/module/**
           filters: AuthenticationFilter
 
 eureka:

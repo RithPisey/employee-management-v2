@@ -38,7 +38,7 @@ public class UserController {
         Optional<User> user = userRepository.findByEmail(authRequest.getEmail());
         Map<Object, Object> tokenData = new HashMap<>();
         if(user.isPresent()){
-            if (user.get().getDeletedAt() != null)  throw new RuntimeException("invalid access");
+            if (user.get().getDeleted_at() != null)  throw new RuntimeException("invalid access");
             Authentication authenticate = authenticationManager
                     .authenticate(
                             new AuthenticationToken(
@@ -48,7 +48,7 @@ public class UserController {
             if (authenticate.isAuthenticated()) {
                 tokenData.put("token", userService.generateToken(authRequest.getEmail(),user.get().getRole().getId()));
                 tokenData.put("email", user.get().getEmail());
-                tokenData.put("role", user.get().getRole().getRoleName());
+                tokenData.put("role", user.get().getRole().getRole_name());
                 return ResponseMessage.responseObject("Token is valid", false, true, tokenData);
             } else {
                 throw new RuntimeException("invalid access");
